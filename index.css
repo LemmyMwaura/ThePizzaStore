@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+:root{
+    --body-font: 'Poppins'
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: var(--body-font), sans-serif;
+}
+
+/* nav{
+    display: flex;
+    align-items: center;
+    padding: 0.4rem;
+} */
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 82rem;
+    margin: 2rem auto;
+    padding: 0 4rem;
+}
+
+.logo > img{
+    width: 50px;
+    height: 50px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-items{
+    display: flex;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.nav-items > li {
+    /* display: inline-block; */
+    padding: 0.4rem 1.2rem;
+    /* background-color: teal; */
+    font-size: bold;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+.nav-items li a {
+    color: black;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    height: 80vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.description{
+    display: block;
+    width: 45%;
+}
+
+.description > h1 {
+    font-size: 5rem;
+}
+
+.description > p {
+    margin-top: 2rem;
+}
+
+.description .order-btn{
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 25px;
+    background-color: antiquewhite;
+    outline: none;
+    border: 1px solid black;
+}
+
+.image > img{
+    animation: spin 5s linear infinite;
+    width: 30rem;
+    max-width: 40vw;
+    height: auto; 
+}
+
+@keyframes spin {
+    100%{
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
