@@ -178,7 +178,7 @@ img{
 }
 
 .nav-items li a {
-    color: var(--main-color);
+    color: var(--text-color);
     font-size: 1.2rem;
 }
 
@@ -226,6 +226,14 @@ img{
     top: 3rem;
 }
 
+.active-link{
+    color: var(--main-color);
+}
+
+.scroll-header{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Hero section */
 .hero{
     display: flex;
     align-items: center;
