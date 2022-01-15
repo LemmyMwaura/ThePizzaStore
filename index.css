@@ -1,22 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 :root{
-    --bodyfont: 'Poppins';
+    /* top space */
+    --header-height: 2rem;
+
+    /* colors */
+    --main-color: rgb(214, 110, 110);
+    --main-color-alt: red;
+    --title-color: #393939;
+    --text-color: #707070;
+    --text-colo-light: #A6A6A6;
+    --body-color: #FBFEFD;
+    --container-color: #FFFFFF;
+
+    /* Font and Typography */
+    --body-font: 'Poppins', sans-serif;
+    --biggest-font-size: 2.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938;
+    --small-font-size: 0.813;
+    --smaller-font-size: 0.75;
+
+
+    /* Scrollbar */
     --scrollbar-width: 1.2vw;
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* media screen roots */
+@media screen and (min-width: 768px) {
+    :root {
+        --body-font: 'Poppins', sans-serif;
+        --biggest-font-size: 4rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+        --smaller-font-size: 0.813rem;    
+    }
+
+
 }
 
-body{
-    font-family: var(--bodyfont), sans-serif;
-    background: #e9d6cd;;
-}
-
-/* chrome + safari scrollbar */
+/* chrome + safari custom scrollbar */
 ::-webkit-scrollbar{
     width: var(--scrollbar-width);
     height: 1em;
@@ -38,12 +66,67 @@ body{
     background: linear-gradient(180deg, hsl(315, 77.8%, 85.9%), hsl(258, 42.9%, 68.4%));
 }
 
-/* firefox scrollbar */
+/* firefox custom scrollbar */
 @supports(scrollbar-color:hsl(315, 77.8%, 85.9%)  hsl(258, 42.9%, 68.4%)){
     * {
         scrollbar-color:hsl(315, 77.8%, 85.9%)  hsl(258, 42.9%, 68.4%);
         scrollbar-width: auto;
     }
+}
+
+*,
+::before,
+::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    background: var(--body-color);
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.section{
+    padding: 4rem 0 2rem;
+}
+
+.section-title, .section-subtitle{
+    text-align: center;
+}
+
+.section-title{
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    margin-bottom: 1.5rem;
+}
+
+.section-subtitle{
+    font-weight: 500;
+    color: var(--first-color);
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 /* document */
@@ -52,44 +135,95 @@ body{
     align-items: center;
     justify-content: space-between;
     max-width: 82rem;
-    margin: 0.5rem auto;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
     padding: 0 4.5rem;
 }
 
-.logo{
+.navigation{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: var(--body-color);
+}
+
+.logo a{
   display: flex;
   align-items: center;
 }
 
-.logo > img{
-    width: 80px;
-    height: 80px;
+.logo img{
+    width: 7.5vw;
+   
 }
 
-.logo > h6{
+.logo h6{
    font-size: 1.5rem;
    margin-left: 0.4rem;
-}
-
-a{
-    text-decoration: none;
+   color: var(--main-color);
 }
 
 .nav-items{
     display: flex;
     gap: 10px;
-    list-style-type: none;
 }
 
 .nav-items > li {
     padding: 0.4rem 1.2rem;
-    font-size: bold;
+    font-weight: bold;
     border-radius: 10px;
 }
 
-.nav-items li a{
-    color: black;
+.nav-items li a {
+    color: var(--main-color);
     font-size: 1.2rem;
+}
+
+.nav-toggle {
+    color: var(--main-color);
+    font-size: 2rem;
+    cursor: pointer;
+} 
+
+
+@media screen and (max-width: 768px){
+    .container{
+        margin-left: 0.3rem;
+        margin-right: 0.3rem;
+        padding: 0rem;
+    }
+
+    .nav-menu{
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 0 1rem;
+        text-align: center;
+        background-color: var(--body-color);
+        transition: 0.4s;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+        border-radius: 0 0 1rem 1rem;
+        z-index: 100;
+    }
+
+    .logo img{
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+
+    .nav-items{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Show menu */
+.show-menu{
+    top: 3rem;
 }
 
 .hero{

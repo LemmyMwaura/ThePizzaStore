@@ -1,16 +1,38 @@
-// let small = document.querySelector('.small')
+// Toggle menu (Media querry)
+function showMenu(toggleID, navID) {
+  const toggle = document.getElementById(toggleID),
+    nav = document.getElementById(navID)
 
-class Pizza {
-    constructor(size, price, toppings) {
-      this.size = size
-      this.price= price
-      this.toppings = toppings
-    }
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("show-menu")
+    })
+  }
 }
 
+showMenu("nav-toggle", "nav-menu")
+
+// Remove mobile menu
+const navLink = document.querySelectorAll(".nav-link")
+
+function linkAction() {
+  const navMenu = document.getElementById("nav-menu")
+  navMenu.classList.remove("show-menu")
+}
+
+navLink.forEach((navlink) => {
+  navlink.addEventListener('click', linkAction)
+})
+
+class Pizza {
+  constructor(size, price, toppings) {
+    this.size = size
+    this.price = price
+    this.toppings = toppings
+  }
+}
 
 // const pizza1 = new Pizza(small, 200, 'crispy')
-
 
 // const pizza = {
 //     size: [small, 'medium', 'large' ],
