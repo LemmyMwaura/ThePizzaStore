@@ -51,6 +51,14 @@ function scrollHeader(){
 
 window.addEventListener('scroll', scrollHeader)
 
+// Show scrolltop
+function scrollTop(){
+  const scrollTop = document.getElementById('scroll-top')
+  if(this.scrollY >= 560) scrollTop.classList.add('show-scrolltop'); else scrollTop.classList.remove('show-scrolltop');
+}
+
+window.addEventListener('scroll', scrollTop)
+
 class Pizza {
   constructor(size, price, toppings) {
     this.size = size

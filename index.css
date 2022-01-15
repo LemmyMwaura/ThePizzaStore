@@ -2,13 +2,13 @@
 
 :root{
     /* top space */
-    --header-height: 2rem;
+    --header-height: 3rem;
 
     /* colors */
     --main-color: rgb(214, 110, 110);
-    --main-color-alt: red;
+    --main-color-alt: rgb(172, 39, 39);
     --title-color: #393939;
-    --text-color: #707070;
+    --text-color: #131212;
     --text-colo-light: #A6A6A6;
     --body-color: #FBFEFD;
     --container-color: #FFFFFF;
@@ -124,30 +124,41 @@ img{
 
 .section-subtitle{
     font-weight: 500;
-    color: var(--first-color);
+    color: var(--main-color);
     display: block;
     margin-bottom: 0.5rem;
 }
 
-/* document */
+
 .container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 82rem;
+    max-width: 960px;
     width: calc(100% - 2rem);
     margin-left: 1rem;
     margin-right: 1rem;
     padding: 0 4.5rem;
 }
 
+.bg-grid{
+    display: grid;
+    gap: 1.5rem;
+}
+
 .navigation{
+    max-width: 1024px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     background-color: var(--body-color);
+}
+
+.nav-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    height: 3rem;
 }
 
 .logo a{
@@ -233,7 +244,117 @@ img{
 .scroll-header{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.scrolltop{
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    background-color: var(--main-color-alt);
+    border-radius: 0.4rem;
+    z-index: 10;
+    transition: 0.4s;
+    visibility: hidden;
+}
+
+.scrolltop:hover{
+    background-color: var(--main-color);
+}
+
+.scrolltop-icon{
+    font-size: 1.8rem;
+    color: var(--body-color);
+}
+
+/* Show scrolltop */
+.show-scrolltop{
+    bottom: 1.5rem;
+    visibility: visible;
+}
+
 /* Hero section */
+.hero-container{
+    height: calc(100vh - var(--header-height));
+    align-content: center;
+}
+
+.hero-title{
+    font-size: var(--biggest-font-size);
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+
+}
+
+.hero-subtitle{
+    font-size: var(--h1-font-size);
+    color: vat(--title-color);
+    margin-bottom: 2rem;
+}
+
+.hero-image{
+    width: 300px;
+    justify-self: center;
+}
+
+/* BUTTONS */
+.btn{
+    display: inline-block;
+    background-color: var(--main-color);
+    color: #FFF;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background-color: var(--main-color-alt);
+}
+
+.about-data{
+    text-align: center;
+}
+
+.about-description{
+    margin-bottom: 1.5rem;
+}
+
+.about-img{
+    width: 280px;
+    border-radius: .5rem;
+    justify-self: center;
+}
+
+/* Service */
+
+.services-container{
+    row-gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+}
+
+.services-content{
+    text-align: center;
+}
+
+.services-image{
+    width: 64px;
+    height: 64px;
+    fill: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.services-title{
+    font-size: var(--h3-font-size);
+    color: var(--title-color);
+    margin-bottom: 0.5rem;
+}
+
+.services-description{
+    padding: 0 1.5rem;
+}
+/* Hero section
 .hero{
     display: flex;
     align-items: center;
@@ -301,7 +422,7 @@ img{
   cursor: pointer;
   border-bottom: 0;
   border-top: 0;
-}
+} */
 
 @keyframes spin {
     100%{
