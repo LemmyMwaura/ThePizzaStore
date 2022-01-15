@@ -1,12 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 :root{
-    --body-font: 'Poppins'
+    --bodyfont: 'Poppins';
+    --scrollbar-width: 1.2vw;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: var(--bodyfont), sans-serif;
+    background: #e9d6cd;;
 }
 
 /* chrome + safari scrollbar */
 ::-webkit-scrollbar{
-    width: 1.2vw;
+    width: var(--scrollbar-width);
     height: 1em;
 }
 
@@ -34,35 +46,29 @@
     }
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    font-family: var(--body-font), sans-serif;
-    background: #e9d6cd;;
-}
-
-/* nav{
-    display: flex;
-    align-items: center;
-    padding: 0.4rem;
-} */
-
+/* document */
 .container{
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 82rem;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
     padding: 0 4.5rem;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
 }
 
 .logo > img{
     width: 80px;
     height: 80px;
+}
+
+.logo > h6{
+   font-size: 1.5rem;
+   margin-left: 0.4rem;
 }
 
 a{
@@ -76,17 +82,13 @@ a{
 }
 
 .nav-items > li {
-    /* display: inline-block; */
     padding: 0.4rem 1.2rem;
-    /* background-color: teal; */
     font-size: bold;
     border-radius: 10px;
-    font-size: 1.2rem;
 }
 
-.nav-items li a {
+.nav-items li a{
     color: black;
-    font-weight: 500;
     font-size: 1.2rem;
 }
 
@@ -108,7 +110,7 @@ a{
 }
 
 .description > h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
 }
 
 .description h1 > span {
@@ -120,12 +122,17 @@ a{
 }
 
 .description .order-btn{
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    border-radius: 25px;
-    background-color: teal;
+    padding: 1rem 2rem;
+    margin-top: 1.5rem;
+    border-radius: 5px;
+    background-color: red;
     outline: none;
-    border: 1px solid black;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 
 .image > img{
@@ -136,8 +143,8 @@ a{
 }
 
 .icons{
-    width: 100vw;
-    background-color: red;
+    width: calc(100vw - var(--scrollbar-width));
+    background-color: rgba(0,0,0, 0.7);
 }
 
 .items{
@@ -148,9 +155,8 @@ a{
 }
 
 .items .wrapper{
-  padding: 2rem 2rem;
+  padding: 2rem 0rem;
   cursor: pointer;
-  /* border: 3px solid white; */
   border-bottom: 0;
   border-top: 0;
 }
