@@ -1,4 +1,4 @@
-let small = document.querySelector('.small')
+// let small = document.querySelector('.small')
 
 class Pizza {
     constructor(size, price, toppings) {
@@ -9,7 +9,7 @@ class Pizza {
 }
 
 
-const pizza1 = new Pizza(small, 200, 'crispy')
+// const pizza1 = new Pizza(small, 200, 'crispy')
 
 
 // const pizza = {
