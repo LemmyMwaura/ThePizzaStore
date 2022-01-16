@@ -84,6 +84,7 @@ sr.reveal(
   }
 )
 
+// Business Logic
 class Pizza {
   constructor(size, price, toppings) {
     this.size = size
