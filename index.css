@@ -411,6 +411,56 @@ img{
     margin-bottom: 1.5rem;
 }
 
+/* Footer */
+.footer-container{
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    row-gap: 2rem;
+}
+
+.footer-logo{
+    font-size: var(--h3-font-size);
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.footer-description{
+    display: block;
+    font-size: var(--small-font-size);
+    margin: .25rem 0 1.5rem;
+}
+
+.footer-social{
+    font-size: 1.5rem;
+    color: var(--title-color);
+    margin-right: 1rem;
+
+}
+
+.footer-title{
+    font-size: var(--h2-font-size);
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.footer-link{
+    display: inline-block;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.footer-link:hover{
+    color: var(--main-color);
+}
+
+.footer-copy{
+    text-align: center;
+    font-size: var(--small-font-size);
+    color: var(--text-colo-light);
+    margin-top: 3.5rem;
+}
+
+
+
 /* Hero section
 .hero{
     display: flex;
