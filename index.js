@@ -85,21 +85,47 @@ sr.reveal(
 )
 
 // Business Logic
-class Pizza {
-  constructor(size, price, toppings) {
-    this.size = size
-    this.price = price
-    this.toppings = toppings
-  }
-}
+// Show Pizza counter
+const numberOfPizza = document.getElementById('show-item')
+const currentPizza = document.querySelectorAll('#current-pizza')
 
-// const pizza1 = new Pizza(small, 200, 'crispy')
+currentPizza.forEach( (pizza) => {
+    let count = 0
+    const minusBtn = pizza.children[3].children[0]
+    const addBtn = pizza.children[3].children[2]
+    const numberOfPizza = minusBtn.nextElementSibling
 
-const pizza = {
-    size: [small, 'medium', 'large' ],
-    price:[200,300,400],
-    crust:['cripsy', 'stuffed', 'glutten-free'],
-    toppings:['']
-}
+    addBtn.addEventListener("click", () => {
+      count = count += 1
+      numberOfPizza.textContent = count
+    })
+    
+    minusBtn.addEventListener("click", () => {
+      if (count <= 0) return
+      count = count -= 1
+      numberOfPizza.textContent = count
+    })
 
-// console.log(pizza.size[2])
+})
+
+// Pricing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
