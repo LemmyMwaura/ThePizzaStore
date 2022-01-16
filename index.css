@@ -472,10 +472,10 @@ img{
 }
 
 @keyframes spin {
-    /* 100%{
+    100%{
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg)
-    } */
+    }
 }
 
 /* Media queries */
@@ -586,7 +586,7 @@ img{
         margin-top: 4rem;;
     }
     .hero-image{
-        width: 500px;
+        width: 400px;
     }
 
     .about-container{
