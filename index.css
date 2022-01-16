@@ -401,6 +401,16 @@ img{
     padding: .625rem .813rem;
     border-radius: 0.5rem 0 0.5rem 0;
 }
+
+/* Contact US */
+.contact-container{
+    text-align: center;
+}
+
+.contact-description{
+    margin-bottom: 1.5rem;
+}
+
 /* Hero section
 .hero{
     display: flex;
