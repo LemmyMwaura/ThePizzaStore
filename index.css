@@ -275,7 +275,23 @@ img{
     visibility: hidden;
 }
 
-.scrolltop:hover{
+.open-cart{
+    position: fixed;
+    right: 1rem;
+    top: -20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    background-color: var(--main-color);
+    border-radius: 0.4rem;
+    z-index: 10;
+    transition: 0.4s;
+    visibility: hidden;
+}
+
+.scrolltop:hover,
+.open-cart:hover{
     background-color: var(--main-color-alt);
 }
 
@@ -287,6 +303,12 @@ img{
 /* Show scrolltop */
 .show-scrolltop{
     bottom: 1.5rem;
+    visibility: visible;
+}
+
+/* addtocart */
+.show-addtocart{
+    top: 5rem;
     visibility: visible;
 }
 
@@ -478,7 +500,6 @@ label::before{
 
 .last-radio > label::before {
     background-color: rgba(0,0,0, 1);
-    height: 50%;
 }
 
 label:hover::before {
@@ -604,7 +625,8 @@ label:hover::before {
     }
 
     .last-radio > label::before {
-        height: 100%;
+        background-color: rgba(0,0,0, 1);
+        height: 50%;
     }
 }
 
@@ -725,3 +747,5 @@ label:hover::before {
     border-bottom: 2px solid black;
     font-size: 1rem;
 }
+
+/* Cart */

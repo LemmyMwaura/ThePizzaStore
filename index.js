@@ -57,13 +57,18 @@ function scrollHeader() {
 window.addEventListener("scroll", scrollHeader)
 
 // Show scrolltop
-function scrollTop() {
-  const scrollTop = document.getElementById("scroll-top")
-  if (this.scrollY >= 560) scrollTop.classList.add("show-scrolltop")
-  else scrollTop.classList.remove("show-scrolltop")
+function scrollTop(scrolltopID, showClass) {
+  const scrollTop = document.getElementById(scrolltopID)
+  if (this.scrollY >= 560) scrollTop.classList.add(showClass)
+  else scrollTop.classList.remove(showClass)
 }
 
-window.addEventListener("scroll", scrollTop)
+window.addEventListener("scroll", () => {
+  scrollTop("scroll-top", "show-scrolltop")
+})
+window.addEventListener("scroll", () => {
+  scrollTop("open-cart", "show-addtocart")
+})
 
 // Scroll Reveal animations
 const sr = ScrollReveal({
@@ -86,59 +91,52 @@ sr.reveal(
 
 // Business Logic
 // Show Pizza counter
-const currentPizza = document.querySelectorAll('#current-pizza')
+const currentPizza = document.querySelectorAll("#current-pizza")
 
-currentPizza.forEach( (pizza) => {
-    let count = 0
-    const minusBtn = pizza.children[3].children[0]
-    const addBtn = pizza.children[3].children[2]
-    const numberOfPizza = minusBtn.nextElementSibling
+currentPizza.forEach((pizza) => {
+  let count = 0
+  const minusBtn = pizza.children[3].children[0]
+  const addBtn = pizza.children[3].children[2]
+  const numberOfPizza = minusBtn.nextElementSibling
 
-    addBtn.addEventListener("click", () => {
-      count = count += 1
-      numberOfPizza.textContent = count
-    })
-    
-    minusBtn.addEventListener("click", () => {
-      if (count <= 0) return
-      count = count -= 1
-      numberOfPizza.textContent = count
-    })
+  addBtn.addEventListener("click", () => {
+    count = count += 1
+    numberOfPizza.textContent = count
+  })
 
+  minusBtn.addEventListener("click", () => {
+    if (count <= 0) return
+    count = count -= 1
+    numberOfPizza.textContent = count
+  })
 })
 
 // Pricing
-const form = document.getElementById("form")
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault()
-  const menuContent = this.closest('menu-content')
-  console.log(menuContent)
-})
-
-function calcTotalPrice(){
-    const menuContent = this.closest('.menu-content')
-    const price = menuContent.children[4]
+function calcTotalPrice() {
+  const currentPizza = document.querySelectorAll("#current-pizza")
+  currentPizza.forEach((pizza) => {
+    const price = pizza.children[4]
     const appendPrice = price.children[0]
     let totalPrice = 0
 
     // Size
-    const small = menuContent.children[5].children[0]
-    const medium = menuContent.children[5].children[2]
-    const large = menuContent.children[5].children[4]
+    const small = pizza.children[5].children[0]
+    const medium = pizza.children[5].children[2]
+    const large = pizza.children[5].children[4]
+    console.log(small, medium, large)
 
     // Crust
-    const crispy = menuContent.children[6].children[0]
-    const stuffed = menuContent.children[6].children[2]
-    const gluttenfree = menuContent.children[6].children[4]
+    const crispy = pizza.children[6].children[0]
+    const stuffed = pizza.children[6].children[2]
+    const gluttenfree = pizza.children[6].children[4]
 
     // Toppings
-    const pepperoni = menuContent.children[7].children[0]
-    const mushroom = menuContent.children[7].children[2]
-    const extraCheese = menuContent.children[7].children[4]
+    const pepperoni = pizza.children[7].children[0]
+    const mushroom = pizza.children[7].children[2]
+    const extraCheese = pizza.children[7].children[4]
     console.log(pepperoni, mushroom, extraCheese)
 
-    if(small.checked == true){
+    if (small.checked == true) {
       totalPrice = 200
     } else if (medium.checked == true) {
       totalPrice = 500
@@ -146,29 +144,29 @@ function calcTotalPrice(){
       totalPrice = 800
     }
 
-    if(crispy.checked == true){
-        totalPrice += 50
+    if (crispy.checked == true) {
+      totalPrice += 50
     } else if (stuffed.checked == true) {
       totalPrice += 60
     } else if (gluttenfree.checked == true) {
       totalPrice += 80
     }
 
-    if(pepperoni.checked == true)  totalPrice += 20
-    if (mushroom.checked == true)  totalPrice += 40
+    if (pepperoni.checked == true) totalPrice += 20
+    if (mushroom.checked == true) totalPrice += 40
     if (extraCheese.checked == true) totalPrice += 30
 
+    const multiplier = document.getElementById("show-item").textContent
 
-    const multiplier = document.getElementById('show-item').textContent
+    // if (multiplier == 0) {
+    //   totalPrice = totalPrice
+    // } else {
+    //   totalPrice = totalPrice * parseInt(multiplier)
+    // }
 
-    if (multiplier == 0) {
-      totalPrice = totalPrice
-    } else {
-      totalPrice = totalPrice * parseInt(multiplier)
-    }
-
-    appendPrice.textContent = totalPrice
-    console.log(totalPrice)
-    return(totalPrice)
-  
+    // appendPrice.textContent = totalPrice
+    // console.log(totalPrice)
+    // return totalPrice
+  })
 }
+
