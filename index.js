@@ -89,7 +89,25 @@ sr.reveal(
   }
 )
 
+// Cart fucnctionality
+const openCart = document.querySelector("#open-cart")
+openCart.addEventListener("click", () => {
+  const cart = document.querySelector("#cart")
+  cart.classList.toggle("show-cart")
+})
+
+
 // Business Logic
+const checkout = document.getElementById('checkout')
+
+checkout.addEventListener('click', () => {
+  console.log('hi')
+  let word = prompt('Do you want your Pizza delivered? If yes enter Location')
+
+    if (word!= null ) {alert('Order will be delivered once you proceed to checkout')}
+    else {alert('Your can pick up your pizza in an hour after checkout')}
+})
+
 // Show Pizza counter
 const currentPizza = document.querySelectorAll("#current-pizza")
 
@@ -111,71 +129,96 @@ currentPizza.forEach((pizza) => {
   })
 })
 
-const openCart = document.querySelector('#open-cart')
-openCart.addEventListener("click", () => {
-  const cart = document.querySelector('#cart')
-  cart.classList.toggle('show-cart')
+// Add to cart
+let addToCartBtns = document.querySelectorAll("#add-to-cart")
+addToCartBtns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+      // calcItemPrice(event)
+
+     
+      addToCart(event)
+     
+  })
 })
 
-// // Pricing
-// let addToCartBtns = document.querySelectorAll('#add-to-cart')
-// addToCartBtns.forEach( (btn) => {
-//   btn.addEventListener ('click', calcTotalPrice )
-// })
+function calcItemPrice(event){
+    btn = event.target
+    const pizza = btn.parentElement
+    const appendPrice = pizza.children[4].children[0].textContent
+    let totalPrice = 0
 
-// function calcTotalPrice(e){
-//   let btn = e.target
-//   const pizza = btn.parentElement
-//   const price = pizza.children[4]
+    // Size
+    const small = pizza.children[5].children[0]
+    const medium = pizza.children[5].children[2]
+    const large = pizza.children[5].children[4]
+    console.log(small, medium, large)
 
-//   const appendPrice = price.children[0]
-//   let totalPrice = 0
+    // Crust
+    const crispy = pizza.children[6].children[0]
+    const stuffed = pizza.children[6].children[2]
+    const gluttenfree = pizza.children[6].children[4]
 
-//   // Size
-//   const small = pizza.children[5].children[0]
-//   const medium = pizza.children[5].children[2]
-//   const large = pizza.children[5].children[4]
-//   console.log(small, medium, large)
+    // Toppings
+    const pepperoni = pizza.children[7].children[0]
+    const mushroom = pizza.children[7].children[2]
+    const extraCheese = pizza.children[7].children[4]
 
-//   // Crust
-//   const crispy = pizza.children[6].children[0]
-//   const stuffed = pizza.children[6].children[2]
-//   const gluttenfree = pizza.children[6].children[4]
+    if (small.checked == true) {
+      totalPrice = 200
+    } else if (medium.checked == true) {
+      totalPrice = 500
+    } else if (large.checked == true) {
+      totalPrice = 800
+    }
 
-//   // Toppings
-//   const pepperoni = pizza.children[7].children[0]
-//   const mushroom = pizza.children[7].children[2]
-//   const extraCheese = pizza.children[7].children[4]
+    if (crispy.checked == true) {
+      totalPrice += 50
+    } else if (stuffed.checked == true) {
+      totalPrice += 60
+    } else if (gluttenfree.checked == true) {
+      totalPrice += 80
+    }
 
-//   if (small.checked == true) {
-//     totalPrice = 200
-//   } else if (medium.checked == true) {
-//     totalPrice = 500
-//   } else if (large.checked == true) {
-//     totalPrice = 800
-//   }
+    if (pepperoni.checked == true) totalPrice += 20
+    if (mushroom.checked == true) totalPrice += 40
+    if (extraCheese.checked == true) totalPrice += 30
 
-//   if (crispy.checked == true) {
-//     totalPrice += 50
-//   } else if (stuffed.checked == true) {
-//     totalPrice += 60
-//   } else if (gluttenfree.checked == true) {
-//     totalPrice += 80
-//   }
+    const multiplier = pizza.children[3].children[2].textContent
 
-//   if (pepperoni.checked == true) totalPrice += 20
-//   if (mushroom.checked == true) totalPrice += 40
-//   if (extraCheese.checked == true) totalPrice += 30
+    if (multiplier == 0) {
+      totalPrice = totalPrice
+    } else {
+      totalPrice = totalPrice * parseInt(multiplier)
+    }
 
-//   const multiplier = document.getElementById("show-item").textContent
+    appendPrice.textContent = totalPrice
+    console.log(totalPrice)
+    return totalPrice
+}
 
-//   if (multiplier == 0) {
-//     totalPrice = totalPrice
-//   } else {
-//     totalPrice = totalPrice * parseInt(multiplier)
-//   }
+const mainContainer = document.getElementById('cart-wrapper')
+function addToCart(event) {
+  let btn = event.target
+  let parent = btn.parentElement
+  let Itemname = btn.parentElement.children[1].textContent
+  let total = document.querySelector('.total')
+  let price = 1500
+  let imageSrc = parent.children[0].src
 
-//   appendPrice.textContent = totalPrice
-//   console.log(totalPrice)
-//   return totalPrice
-// }
+  let itemContainer = document.createElement("div")
+  mainContainer.append(itemContainer)
+  itemContainer.innerHTML = `
+  <div class="cart-items">
+  <img src="${imageSrc}" class="cart-img" alt="">
+  <div class="item-name">${Itemname}</div>
+  <span class="cart-price"> ${price}
+  </span>
+  <button class='btn cart-btn'>
+      <i class='bx bx-trash'></i>
+  </button>
+  </div>
+  `
+
+  total.children[0].textContent = (price)
+
+}
