@@ -111,62 +111,71 @@ currentPizza.forEach((pizza) => {
   })
 })
 
-// Pricing
-function calcTotalPrice() {
-  const currentPizza = document.querySelectorAll("#current-pizza")
-  currentPizza.forEach((pizza) => {
-    const price = pizza.children[4]
-    const appendPrice = price.children[0]
-    let totalPrice = 0
+const openCart = document.querySelector('#open-cart')
+openCart.addEventListener("click", () => {
+  const cart = document.querySelector('#cart')
+  cart.classList.toggle('show-cart')
+})
 
-    // Size
-    const small = pizza.children[5].children[0]
-    const medium = pizza.children[5].children[2]
-    const large = pizza.children[5].children[4]
-    console.log(small, medium, large)
+// // Pricing
+// let addToCartBtns = document.querySelectorAll('#add-to-cart')
+// addToCartBtns.forEach( (btn) => {
+//   btn.addEventListener ('click', calcTotalPrice )
+// })
 
-    // Crust
-    const crispy = pizza.children[6].children[0]
-    const stuffed = pizza.children[6].children[2]
-    const gluttenfree = pizza.children[6].children[4]
+// function calcTotalPrice(e){
+//   let btn = e.target
+//   const pizza = btn.parentElement
+//   const price = pizza.children[4]
 
-    // Toppings
-    const pepperoni = pizza.children[7].children[0]
-    const mushroom = pizza.children[7].children[2]
-    const extraCheese = pizza.children[7].children[4]
-    console.log(pepperoni, mushroom, extraCheese)
+//   const appendPrice = price.children[0]
+//   let totalPrice = 0
 
-    if (small.checked == true) {
-      totalPrice = 200
-    } else if (medium.checked == true) {
-      totalPrice = 500
-    } else if (large.checked == true) {
-      totalPrice = 800
-    }
+//   // Size
+//   const small = pizza.children[5].children[0]
+//   const medium = pizza.children[5].children[2]
+//   const large = pizza.children[5].children[4]
+//   console.log(small, medium, large)
 
-    if (crispy.checked == true) {
-      totalPrice += 50
-    } else if (stuffed.checked == true) {
-      totalPrice += 60
-    } else if (gluttenfree.checked == true) {
-      totalPrice += 80
-    }
+//   // Crust
+//   const crispy = pizza.children[6].children[0]
+//   const stuffed = pizza.children[6].children[2]
+//   const gluttenfree = pizza.children[6].children[4]
 
-    if (pepperoni.checked == true) totalPrice += 20
-    if (mushroom.checked == true) totalPrice += 40
-    if (extraCheese.checked == true) totalPrice += 30
+//   // Toppings
+//   const pepperoni = pizza.children[7].children[0]
+//   const mushroom = pizza.children[7].children[2]
+//   const extraCheese = pizza.children[7].children[4]
 
-    const multiplier = document.getElementById("show-item").textContent
+//   if (small.checked == true) {
+//     totalPrice = 200
+//   } else if (medium.checked == true) {
+//     totalPrice = 500
+//   } else if (large.checked == true) {
+//     totalPrice = 800
+//   }
 
-    // if (multiplier == 0) {
-    //   totalPrice = totalPrice
-    // } else {
-    //   totalPrice = totalPrice * parseInt(multiplier)
-    // }
+//   if (crispy.checked == true) {
+//     totalPrice += 50
+//   } else if (stuffed.checked == true) {
+//     totalPrice += 60
+//   } else if (gluttenfree.checked == true) {
+//     totalPrice += 80
+//   }
 
-    // appendPrice.textContent = totalPrice
-    // console.log(totalPrice)
-    // return totalPrice
-  })
-}
+//   if (pepperoni.checked == true) totalPrice += 20
+//   if (mushroom.checked == true) totalPrice += 40
+//   if (extraCheese.checked == true) totalPrice += 30
 
+//   const multiplier = document.getElementById("show-item").textContent
+
+//   if (multiplier == 0) {
+//     totalPrice = totalPrice
+//   } else {
+//     totalPrice = totalPrice * parseInt(multiplier)
+//   }
+
+//   appendPrice.textContent = totalPrice
+//   console.log(totalPrice)
+//   return totalPrice
+// }
