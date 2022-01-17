@@ -383,44 +383,47 @@
                             <i class='bx bx-plus'></i>
                         </button>
                     </span>
-                    <span class="menu-price">Ksh:<span class="menu-price">000.00</span></span>
+                    <span class="menu-price">Total Price = Ksh:
+                        <span>000.00</span>
+                    </span>
+                    <form id="form">
+                        <div class="radio-buttons" id="radio">
+                                <input type="radio" id="small-pizza1" name="pizza1" value="Small">
+                                <label for="small-pizza1" data-price="Ksh200">Small</label>
 
-                    <div class="radio-buttons">
-                            <input type="radio" id="small-pizza1" name="pizza1" value="Small">
-                            <label for="small-pizza1" data-price="Ksh200">Small</label>
+                                <input type="radio" id="medium-pizza1" name="pizza1" value="Medium">
+                                <label for="medium-pizza1" data-price="Ksh500">Medium</label>
 
-                            <input type="radio" id="medium-pizza1" name="pizza1" value="Medium">
-                            <label for="medium-pizza1" data-price="Ksh500">Medium</label>
+                                <input type="radio" id="large-pizza1" name="pizza1" value="Large">
+                                <label for="large-pizza1" data-price="Ksh800">Large</label>
+                        </div>
 
-                            <input type="radio" id="large-pizza1" name="pizza1" value="Large">
-                            <label for="large-pizza1" data-price="Ksh800">Large</label>
-                    </div>
+                        <div class="radio-buttons">
+                                <input type="radio" id="crispy-pizza1" name="crust1" value="Crispy">
+                                <label for="crispy-pizza1" data-price="Ksh50">crispy</label>
 
-                    <div class="radio-buttons">
-                            <input type="radio" id="crispy-pizza1" name="crust1" value="Small">
-                            <label for="crispy-pizza1" data-price="Ksh50">crispy</label>
+                                <input type="radio" id="stuffed-pizza1" name="crust1" value="Stuffed">
+                                <label for="stuffed-pizza1" data-price="Ksh60">Stuffed</label>
 
-                            <input type="radio" id="stuffed-pizza1" name="crust1" value="Medium">
-                            <label for="stuffed-pizza1" data-price="Ksh60">Stuffed</label>
+                                <input type="radio" id="gluttenfree-pizza1" name="crust1" value="g-free">
+                                <label for="gluttenfree-pizza1" data-price="Ksh80">g-free</label>
+                        </div>
 
-                            <input type="radio" id="gluttenfree-pizza1" name="crust1" value="Large">
-                            <label for="gluttenfree-pizza1" data-price="Ksh80">g-free</label>
-                    </div>
+                        <div class="radio-buttons last-radio">
+                                <input type="checkbox" id="topping1-pizza1" value="Small">
+                                <label for="topping1-pizza1" data-price="Ksh20">Pep peroni</label>
 
-                    <div class="radio-buttons last-radio">
-                            <input type="checkbox" id="topping1-pizza1" value="Small">
-                            <label for="topping1-pizza1" data-price="Ksh20">Pep peroni</label>
+                                <input type="checkbox" id="topping2-pizza1" value="Medium">
+                                <label for="topping2-pizza1" data-price="Ksh40">Mush room</label>
 
-                            <input type="checkbox" id="topping2-pizza1" value="Medium">
-                            <label for="topping2-pizza1" data-price="Ksh40">Mush room</label>
+                                <input type="checkbox" id="topping3-pizza1" value="Large">
+                                <label for="topping3-pizza1" data-price="Ksh30">Extra Cheese</label>
+                        </div>
 
-                            <input type="checkbox" id="topping3-pizza1" value="Large">
-                            <label for="topping3-pizza1" data-price="Ksh30">Extra Cheese</label>
-                    </div>
-
-                    <button class="btn menu-button">
-                        <i class='bx bx-cart-alt'></i>
-                    </button>
+                        <button class="btn menu-button" type="submit id="add-to-cart">
+                            <i class='bx bx-cart-alt'></i>
+                        </button>
+                </form>
                 </div>
 
                 <div class="menu-content" id="current-pizza">
@@ -438,7 +441,9 @@
                             <i class='bx bx-plus'></i>
                         </button>
                     </span>
-                    <span class="menu-price">$22.00</span>
+                    <span class="menu-price">Total Price = Ksh:
+                        <span>000.00</span>
+                    </span>
                     <div class="radio-buttons">
                         <input type="radio" id="small-pizza2" name="pizza2" value="Small">
                         <label for="small-pizza2" data-price="Ksh200">Small</label>
@@ -450,13 +455,13 @@
                         <label for="large-pizza2" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza2" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza2" name="crust2" value="Small">
                         <label for="crispy-pizza2" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza2" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza2" name="crust2" value="Medium">
                         <label for="stuffed-pizza2" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza2" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza2" name="crust2" value="Large">
                         <label for="gluttenfree-pizza2" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -470,7 +475,7 @@
                             <input type="checkbox" id="topping3-pizza2" value="Large">
                             <label for="topping3-pizza2" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" type="submit id="add-to-cart">
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>
@@ -501,13 +506,13 @@
                         <label for="large-pizza3" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza3" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza3" name="crust3" value="Small">
                         <label for="crispy-pizza3" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza3" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza3" name="crust3" value="Medium">
                         <label for="stuffed-pizza3" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza3" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza3" name="crust3" value="Large">
                         <label for="gluttenfree-pizza3" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -521,7 +526,7 @@
                             <input type="checkbox" id="topping3-pizza3" value="Large">
                             <label for="topping3-pizza3" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" id="add-to-cart"> 
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>
@@ -552,13 +557,13 @@
                         <label for="large-pizza4" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza4" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza4" name="crust4" value="Small">
                         <label for="crispy-pizza4" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza4" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza4" name="crust4" value="Medium">
                         <label for="stuffed-pizza4" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza4" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza4" name="crust4" value="Large">
                         <label for="gluttenfree-pizza4" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -572,7 +577,7 @@
                             <input type="checkbox" id="topping3-pizza4" value="Large">
                             <label for="topping3-pizza4" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" id="add-to-cart">
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>
@@ -603,13 +608,13 @@
                         <label for="large-pizza5" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza5" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza5" name="crust5" value="Small">
                         <label for="crispy-pizza5" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza5" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza5" name="crust5" value="Medium">
                         <label for="stuffed-pizza5" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza5" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza5" name="crust5" value="Large">
                         <label for="gluttenfree-pizza5" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -623,7 +628,7 @@
                             <input type="checkbox" id="topping3-pizza5" value="Large">
                             <label for="topping3-pizza5" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" id="add-to-cart">
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>
@@ -652,13 +657,13 @@
                         <label for="large-pizza6" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza6" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza6" name="crust6" value="Small">
                         <label for="crispy-pizza6" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza6" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza6" name="crust6" value="Medium">
                         <label for="stuffed-pizza6" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza6" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza6" name="crust6" value="Large">
                         <label for="gluttenfree-pizza6" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -672,7 +677,7 @@
                             <input type="checkbox" id="topping3-pizza6" value="Large">
                             <label for="topping3-pizza6" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" id="add-to-cart">
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>
@@ -703,13 +708,13 @@
                         <label for="large-pizza7" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza7" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza7" name="crust7" value="Small">
                         <label for="crispy-pizza7" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza7" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza7" name="crust7" value="Medium">
                         <label for="stuffed-pizza7" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza7" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza7" name="crust7" value="Large">
                         <label for="gluttenfree-pizza7" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -723,7 +728,7 @@
                             <input type="checkbox" id="topping3-pizza7" value="Large">
                             <label for="topping3-pizza7" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" id="add-to-cart">
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>
@@ -754,13 +759,13 @@
                         <label for="large-pizza8" data-price="Ksh800">Large</label>
                     </div>
                     <div class="radio-buttons">
-                        <input type="radio" id="crispy-pizza8" name="crust1" value="Small">
+                        <input type="radio" id="crispy-pizza8" name="crust8" value="Small">
                         <label for="crispy-pizza8" data-price="Ksh50">crispy</label>
 
-                        <input type="radio" id="stuffed-pizza8" name="crust1" value="Medium">
+                        <input type="radio" id="stuffed-pizza8" name="crust8" value="Medium">
                         <label for="stuffed-pizza8" data-price="Ksh60">Stuffed</label>
 
-                        <input type="radio" id="gluttenfree-pizza8" name="crust1" value="Large">
+                        <input type="radio" id="gluttenfree-pizza8" name="crust8" value="Large">
                         <label for="gluttenfree-pizza8" data-price="Ksh80">g-free</label>
                     </div>
 
@@ -774,7 +779,7 @@
                             <input type="checkbox" id="topping3-pizza8" value="Large">
                             <label for="topping3-pizza8" data-price="Ksh30">Extra Cheese</label>
                     </div>
-                    <button class="btn menu-button">
+                    <button class="btn menu-button" id="add-to-cart">
                         <i class='bx bx-cart-alt'></i>
                     </button>
                 </div>

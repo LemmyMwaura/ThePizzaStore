@@ -603,6 +603,9 @@ label:hover::before {
         align-self: center;
     }
 
+    .last-radio > label::before {
+        height: 100%;
+    }
 }
 
 @media screen and (min-width: 768px){
@@ -698,6 +701,7 @@ label:hover::before {
     display: flex;
     align-items: center;
     gap: 5px;
+    width: 100%;
     margin-bottom: 0.3rem;
 }
 
