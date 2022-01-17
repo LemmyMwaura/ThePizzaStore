@@ -23,30 +23,6 @@ navLink.forEach((navlink) => {
   navlink.addEventListener("click", linkAction)
 })
 
-// Scroll Sections Active link
-// const sections = document.querySelectorAll("section[id]")
-// function scrollActive() {
-//   const scrollY = window.pageYOffset
-
-//   sections.forEach((current) => {
-//     const sectionHeight = current.offsetHeight
-//     const sectionTop = current.offsetTop - 50
-//     let sectionId = current.getAttribute("id")
-
-//     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-//       document
-//         .querySelector(".navigation-menu a[href*=" + sectionId + "]")
-//         .classList.add("active-link")
-//     } else {
-//       document
-//         .querySelector(".navigation-menu a[href*=" + sectionId + "]")
-//         .classList.remove("active-link")
-//     }
-//   })
-// }
-
-// window.addEventListener("scroll", scrollActive)
-
 // Change Background header
 function scrollHeader() {
   const nav = document.getElementById("header")
@@ -83,39 +59,33 @@ sr.reveal(
             .about-data, .about-img,
             .services-content, .menu-content,
             .contact-data, .contact-button,
-            .footer-content`,
+            .footer-content, .form`, 
   {
     interval: 200,
   }
 )
 
 // Cart fucnctionality
-const openCart = document.querySelector("#open-cart")
+const openCart = document.getElementById("open-cart")
 openCart.addEventListener("click", () => {
-  const cart = document.querySelector("#cart")
+  const cart = document.getElementById("cart")
   cart.classList.toggle("show-cart")
 })
 
-
 // Business Logic
-const checkout = document.getElementById('checkout')
-
-checkout.addEventListener('click', () => {
-  console.log('hi')
-  let word = prompt('Do you want your Pizza delivered? If yes enter Location')
-
-    if (word!= null ) {alert('Order will be delivered once you proceed to checkout')}
-    else {alert('Your can pick up your pizza in an hour after checkout')}
+const form = document.getElementById("form")
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  calcItemPrice()
+  addToCart()
 })
 
-// Show Pizza counter
-const currentPizza = document.querySelectorAll("#current-pizza")
-
-currentPizza.forEach((pizza) => {
+// Add / Minus quantity
+function incrementCount(){
   let count = 0
-  const minusBtn = pizza.children[3].children[0]
-  const addBtn = pizza.children[3].children[2]
-  const numberOfPizza = minusBtn.nextElementSibling
+  const minusBtn = document.getElementById('minus')
+  const addBtn = document.getElementById('add')
+  const numberOfPizza = document.getElementById('show-item')
 
   addBtn.addEventListener("click", () => {
     count = count += 1
@@ -127,41 +97,27 @@ currentPizza.forEach((pizza) => {
     count = count -= 1
     numberOfPizza.textContent = count
   })
-})
+}
 
-// Add to cart
-let addToCartBtns = document.querySelectorAll("#add-to-cart")
-addToCartBtns.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-      // calcItemPrice(event)
+incrementCount()
 
-     
-      addToCart(event)
-     
-  })
-})
-
-function calcItemPrice(event){
-    btn = event.target
-    const pizza = btn.parentElement
-    const appendPrice = pizza.children[4].children[0].textContent
+function calcItemPrice(){
+    const appendPrice = document.getElementById('append-price')
     let totalPrice = 0
-
     // Size
-    const small = pizza.children[5].children[0]
-    const medium = pizza.children[5].children[2]
-    const large = pizza.children[5].children[4]
-    console.log(small, medium, large)
-
+    const small = document.getElementById('small')
+    const medium = document.getElementById('medium')
+    const large = document.getElementById('large')
+    
     // Crust
-    const crispy = pizza.children[6].children[0]
-    const stuffed = pizza.children[6].children[2]
-    const gluttenfree = pizza.children[6].children[4]
+    const crispy =document.getElementById('crispy')
+    const stuffed = document.getElementById('stuffed')
+    const gluttenfree = document.getElementById('gluttenfree')
 
     // Toppings
-    const pepperoni = pizza.children[7].children[0]
-    const mushroom = pizza.children[7].children[2]
-    const extraCheese = pizza.children[7].children[4]
+    const pepperoni = document.getElementById('topping1')
+    const mushroom = document.getElementById('topping2')
+    const extraCheese = document.getElementById('topping3')
 
     if (small.checked == true) {
       totalPrice = 200
@@ -183,42 +139,104 @@ function calcItemPrice(event){
     if (mushroom.checked == true) totalPrice += 40
     if (extraCheese.checked == true) totalPrice += 30
 
-    const multiplier = pizza.children[3].children[2].textContent
+    const multiplier = parseInt(document.getElementById('show-item').textContent)
 
-    if (multiplier == 0) {
-      totalPrice = totalPrice
+    if (multiplier <= 0) {
+      totalPrice = 0
     } else {
       totalPrice = totalPrice * parseInt(multiplier)
     }
 
     appendPrice.textContent = totalPrice
-    console.log(totalPrice)
     return totalPrice
 }
 
-const mainContainer = document.getElementById('cart-wrapper')
-function addToCart(event) {
-  let btn = event.target
-  let parent = btn.parentElement
-  let Itemname = btn.parentElement.children[1].textContent
-  let total = document.querySelector('.total')
-  let price = 1500
-  let imageSrc = parent.children[0].src
+// Refresh Total Cointer
+radios = document.querySelectorAll('input[type="radio"]')
+checks = document.querySelectorAll('input[type="checkbox"]')
+radios.forEach( (radio) => {
+  radio.addEventListener('change', calcItemPrice)
+})
+checks.forEach( (check) => {
+  check.addEventListener('change', calcItemPrice)
+})
 
+// Append to Cart
+const mainContainer = document.getElementById('cart-item')
+function addToCart() {
+  const getSize = (() => {
+    if(document.getElementById('small').checked) return "small";
+    else if (document.getElementById('medium').checked) return 'medium';
+    else if (document.getElementById('large').checked) return 'large';
+  }); 
+
+  const getCrust = (() => {
+    if(document.getElementById('crispy').checked) return "crispy";
+    else if (document.getElementById('stuffed').checked) return 'stuffed';
+    else if (document.getElementById('gluttenfree').checked) return 'gluttenfree';
+  }) ; 
+
+  const selectedToppings = document.querySelectorAll('input[name="toppings"]:checked')
+  let toppings = []
+  selectedToppings.forEach( (topping) => {
+    toppings.push(topping)
+  })
+ 
+  let imgSrc = [
+    "./Images/Pizza's/pizza2.png",
+    "./Images/Pizza's/pizza3.png",
+    "./Images/Pizza's/pizza4.png",
+    "./Images/Pizza's/pizza5.png",
+    "./Images/Pizza's/pizza6.png",
+    "./Images/Pizza's/pizza7.png",
+    "./Images/Pizza's/pizza8.png",
+    "./Images/Pizza's/pizza9.png",
+    "./Images/Pizza's/pizza10.png",
+   ]
+
+  let randomNumber = Math.floor(Math.random() * 9) 
+  let randonImgSrc = imgSrc[randomNumber]
+
+  let total = document.getElementById('append-price').textContent
   let itemContainer = document.createElement("div")
   mainContainer.append(itemContainer)
   itemContainer.innerHTML = `
-  <div class="cart-items">
-  <img src="${imageSrc}" class="cart-img" alt="">
-  <div class="item-name">${Itemname}</div>
-  <span class="cart-price"> ${price}
-  </span>
-  <button class='btn cart-btn'>
-      <i class='bx bx-trash'></i>
-  </button>
-  </div>
+  <img class="cart-img" src="${randonImgSrc}" alt="">
+  <h5 class="cart-price">Ksh ${total}</h5>
+  <h5 class="cart-size">${getSize()}</h5>
+  <h5 class="cart-crust">${getCrust()}</h5>
+  <ul class="cart-toppings">
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+</div>
   `
+  toppings.forEach( (i) => {
+    console.log(i.value)
+    itemContainer.children[5].append(i.value)
+  })
 
-  total.children[0].textContent = (price)
+  total.children[0].textContent = (price * quantity);
 
 }
+
+// function addDeliPrice(){
+//   let total = document.querySelector('.total')
+//   total.children[0].textContent = parseInt(total.children[0].textContent) + 200;
+// }
+
+// const checkout = document.getElementById('checkout')
+// checkout.addEventListener('click', () => {
+//   const delivery = document.querySelector('#delivery')
+//   console.log('clicked')
+//   if (delivery.checked == true) {
+//     addDeliPrice()
+//     prompt('Enter your Location NB: All deliveries cost 200Ksh and we only deliver within Nairobi')
+//     alert('Order will be delivered once you proceed to checkout')
+//   } else {
+//     alert('Your can pick up your pizza in an hour after checkout')
+//   }
+// })
+
+
