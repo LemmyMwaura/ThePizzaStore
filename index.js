@@ -268,19 +268,26 @@ function totalValueOfCart() {
 const checkout = document.getElementById("checkout")
 checkout.addEventListener("click", () => {
   const delivery = document.querySelector("#delivery")
-  if (delivery.checked) {
+  if (delivery.checked == true) {
     addDeliPrice()
     prompt(
       "Enter your Location NB: All deliveries cost 200Ksh and we only deliver within Nairobi"
     )
     alert("Order will be delivered once you proceed to checkout")
   } else {
+    addDeliPrice()
     alert("Your can pick up your pizza in an hour after checkout")
   }
 })
 
 function addDeliPrice() {
-  let total = document.querySelector(".total-cart").textContent
-  console.log(total)
-  total.textContent = parseInt(total.textContent) + 200
+  let total = document.querySelector("#total-cart")
+  const delivery = document.querySelector("#delivery")
+  if (delivery.checked == true){
+    total.textContent = parseInt(total.textContent) + 200
+  }
+
+  else{
+     total.textContent = parseInt(total.textContent) - 200
+  }
 }
