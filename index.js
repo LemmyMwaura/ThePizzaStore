@@ -91,11 +91,6 @@ function validatecart() {
   const stuffed = document.getElementById("stuffed")
   const gluttenfree = document.getElementById("gluttenfree")
 
-  // Toppings
-  const pepperoni = document.getElementById("topping1")
-  const mushroom = document.getElementById("topping2")
-  const extraCheese = document.getElementById("topping3")
-
   if (
     small.checked != true &&
     medium.checked != true &&
@@ -131,7 +126,6 @@ function incrementCount() {
     numberOfPizza.textContent = count
   })
 }
-
 incrementCount()
 
 function calcItemPrice() {
@@ -196,6 +190,7 @@ checks.forEach((check) => {
 
 // Append to Cart
 const mainContainer = document.getElementById("cart-item")
+const mainModalContainer = document.getElementById("modal-body")
 function addToCart() {
   const getSize = () => {
     if (document.getElementById("small").checked) return "small"
@@ -235,8 +230,26 @@ function addToCart() {
   const quantity = document.getElementById("show-item").textContent
   let total = document.getElementById("append-price").children[0].textContent
   let itemContainer = document.createElement("div")
+  let modalContainer = document.createElement("div")
+
   mainContainer.append(itemContainer)
+  mainModalContainer.append(modalContainer)
   itemContainer.innerHTML = `
+  <img class="cart-img" src="${randonImgSrc}" alt="">
+  <h5 class="cart-price cartprice">Ksh ${total}</h5>
+  <h5 class="cart-size">${getSize()}</h5>
+  <h5 class="cart-quantity">${quantity}</h5>
+  <h5 class="cart-crust">${getCrust()}</h5>
+  <ul class="cart-toppings">${toppings.map((i) => {
+    return i.value
+  })}
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+  </div>
+  `
+  modalContainer.innerHTML = `
   <img class="cart-img" src="${randonImgSrc}" alt="">
   <h5 class="cart-price">Ksh ${total}</h5>
   <h5 class="cart-size">${getSize()}</h5>
@@ -249,14 +262,14 @@ function addToCart() {
       <li></li>
       <li></li>
   </ul>
-</div>
+  </div>
   `
   totalValueOfCart()
 }
 
 function totalValueOfCart() {
   const totalValueOfItems = document.getElementById("total-cart")
-  const prices = document.querySelectorAll(".cart-price")
+  const prices = document.querySelectorAll(".cartprice")
   let sum = 0
   prices.forEach((price) => {
     let quantity = price.parentElement.children[3].textContent
@@ -274,20 +287,52 @@ checkout.addEventListener("click", () => {
       "Enter your Location NB: All deliveries cost 200Ksh and we only deliver within Nairobi"
     )
     alert("Order will be delivered once you proceed to checkout")
+    const modal = document.querySelector("#modal")
+    openModal(modal)
   } else {
     addDeliPrice()
     alert("Your can pick up your pizza in an hour after checkout")
+    const modal = document.querySelector("#modal")
+    openModal(modal)
   }
 })
 
 function addDeliPrice() {
   let total = document.querySelector("#total-cart")
   const delivery = document.querySelector("#delivery")
-  if (delivery.checked == true){
-    total.textContent = parseInt(total.textContent) + 200
-  }
 
-  else{
-     total.textContent = parseInt(total.textContent) - 200
-  }
+  delivery.addEventListener("click", () => {
+    if (delivery.checked == true) {
+      total.textContent = parseInt(total.textContent) + 200
+    }
+    if (delivery.checked !== true) {
+      total.textContent = parseInt(total.textContent) - 200
+    }
+  })
+}
+
+// Modal
+const closeBtn = document.querySelectorAll("[data-modal-close]")
+const overlay = document.getElementById("overlay")
+closeBtn.forEach((btn) => {
+  const modal = btn.closest(".modal")
+  btn.addEventListener("click", () => {
+    closeModal(modal)
+  })
+})
+overlay.addEventListener("click", () => {
+  const modals = document.querySelectorAll(".modal.active")
+  modals.forEach((modal) => {
+    closeModal(modal)
+  })
+})
+function openModal(modal) {
+  if (modal == undefined) return
+  modal.classList.add("active")
+  overlay.classList.add("active")
+}
+function closeModal(modal) {
+  if (modal == undefined) return
+  modal.classList.remove("active")
+  overlay.classList.remove("active")
 }
