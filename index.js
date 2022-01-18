@@ -282,7 +282,6 @@ const checkout = document.getElementById("checkout")
 checkout.addEventListener("click", () => {
   const delivery = document.querySelector("#delivery")
   if (delivery.checked == true) {
-    addDeliPrice()
     prompt(
       "Enter your Location NB: All deliveries cost 200Ksh and we only deliver within Nairobi"
     )
@@ -310,7 +309,7 @@ function addDeliPrice() {
     }
   })
 }
-
+addDeliPrice()
 // Modal
 const closeBtn = document.querySelectorAll("[data-modal-close]")
 const overlay = document.getElementById("overlay")
