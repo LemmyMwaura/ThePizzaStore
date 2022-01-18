@@ -477,7 +477,7 @@ label[for="delivery"]{
     text-align: center;
     cursor: pointer;
     border: 4px solid black;
-    width: 25%;
+    width: 70%;
     margin-bottom: 0.5rem;
     margin-top: 3rem;
 }
@@ -742,6 +742,13 @@ label[for='delivery'] > i {
     .menu-img{
         width: 150px;
     }
+
+    label[for="delivery"],
+    .checkout-btn,
+    .total{
+        min-width: 50%;
+    }
+    
 }
 
 @media screen and (min-width: 960px){
@@ -801,14 +808,13 @@ label[for='delivery'] > i {
 /* Cart */
 .cart{
     position: fixed;
-    height: 110vh;
+    height: calc(100vh - var(--header-height));
     width: 100vw;
     background-color: var(--container-color);
     top:0;
     right: -110%;
     transition: 0.4s ease;
     overflow:scroll;
-    
 }
 
 .show-cart{
@@ -826,7 +832,7 @@ label[for='delivery'] > i {
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-width: 60vw;
+    min-width: 90vw;
     justify-content: space-between;
     margin-top: 2rem;
     background-color: var(--container-color);
@@ -864,7 +870,7 @@ label[for='delivery'] > i {
     border: 2px solid rgba(0,0,0, 0.9);
     font-size: 1rem;
     border-radius: 5px;
-    width: 25%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content:center;
@@ -879,5 +885,5 @@ label[for='delivery'] > i {
 .checkout-btn{
     padding: 0.6rem 1rem;
     border: 0;
-    width: 25%;
+    width: 70%;
 }
