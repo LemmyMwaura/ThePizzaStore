@@ -109,24 +109,28 @@ function validatecart() {
 }
 
 // Add / Minus quantity
+let count = 0
+const minusBtn = document.getElementById("minus")
+const addBtn = document.getElementById("add")
+const numberOfPizza = document.getElementById("show-item")
+
 function incrementCount() {
-  let count = 0
-  const minusBtn = document.getElementById("minus")
-  const addBtn = document.getElementById("add")
-  const numberOfPizza = document.getElementById("show-item")
-
-  addBtn.addEventListener("click", () => {
-    count = count += 1
-    numberOfPizza.textContent = count
-  })
-
-  minusBtn.addEventListener("click", () => {
-    if (count <= 0) return
-    count = count -= 1
-    numberOfPizza.textContent = count
-  })
+  if (count <= 0) return
+  count = count += 1
+  numberOfPizza.textContent = count
 }
-incrementCount()
+function decrementCount() {
+  if (count <= 0) return
+  count = count -= 1
+  numberOfPizza.textContent = count
+}
+
+addBtn.addEventListener("click", () => {
+  incrementCount()
+})
+minusBtn.addEventListener("click", () => {
+  decrementCount()
+})
 
 function calcItemPrice() {
   const appendPrice = document.getElementById("append-price").children[0]
